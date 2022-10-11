@@ -27,3 +27,6 @@ REQUESTS = [
         "lengthOfReservation": 2
     }
 ]
+
+def get_all_requests():
+    return REQUESTS
