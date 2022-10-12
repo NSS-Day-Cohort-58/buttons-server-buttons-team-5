@@ -29,6 +29,10 @@ REQUESTS = [
 ]
 
 
+def get_all_requests():
+    return REQUESTS
+
+
 def delete_request(id):
     # Initial -1 value for request index, in case one isn't found
     request_index = -1
