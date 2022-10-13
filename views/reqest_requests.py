@@ -32,6 +32,34 @@ REQUESTS = [
 def get_all_requests():
     return REQUESTS
 
+def get_single_request(id):
+
+    requested_metal = None
+
+    for request in REQUESTS:
+        if request["id"] == id:
+            requested_request= request
+
+    return requested_metal
+
+def create_requests(request):
+
+    max_id = REQUESTS[-1]["id"]
+
+    new_id = max_id + 1
+
+    request["id"] = new_id
+
+    REQUESTS.append(request)
+
+    return request
+
+def update_request(id, new_request):
+
+    for index, request in enumerate(REQUESTS):
+        if request["id"] == id:
+            REQUESTS[index] = new_request
+            break 
 
 def delete_request(id):
     # Initial -1 value for request index, in case one isn't found
