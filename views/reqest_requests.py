@@ -63,7 +63,6 @@ def update_request(id, new_request):
             REQUESTS[index] = new_request
             break 
 
-
 def delete_request(id):
     # Initial -1 value for request index, in case one isn't found
     request_index = -1
