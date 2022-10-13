@@ -28,6 +28,8 @@ REQUESTS = [
     }
 ]
 
+def get_all_requests():
+    return REQUESTS
 
 def get_all_requests():
     return REQUESTS
