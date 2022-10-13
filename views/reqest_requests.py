@@ -40,7 +40,7 @@ def get_single_request(id):
         if request["id"] == id:
             requested_request= request
 
-    return requested_metal
+    return requested_request
 
 def create_requests(request):
 
