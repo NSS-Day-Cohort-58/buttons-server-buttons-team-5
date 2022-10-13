@@ -34,7 +34,7 @@ def get_all_requests():
 
 def get_single_request(id):
 
-    requested_metal = None
+    requested_request = None
 
     for request in REQUESTS:
         if request["id"] == id:
