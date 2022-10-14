@@ -30,6 +30,20 @@ def get_single_clown(id):
 
     return requested_clown
 
+def delete_clown(id):
+    clown_index = -1
+    for index, clown in enumerate(CLOWNS):
+        if clown["id"] == id:
+            clown_index = index
+    if clown_index >= 0:
+        CLOWNS.pop(clown_index)
+        
+def update_clown(id, new_clown):
+    for index, clown in enumerate(CLOWNS):
+        if clown["id"] == id:
+            CLOWNS[index] = new_clown
+            break 
+
 
 def create_clown(clown):
     # Get the id value of the last order in the list
