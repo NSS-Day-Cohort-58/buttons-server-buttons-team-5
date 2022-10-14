@@ -1,5 +1,7 @@
 import json
 from http.server import BaseHTTPRequestHandler, HTTPServer
+from views import get_all_clowns, get_all_completions, get_all_requests, create_clown, create_completion, create_requests, delete_clown, delete_completion, delete_request, get_single_clown, get_single_completion, get_single_request, update_clown, update_completion, update_request
+
 
 class HandleRequests(BaseHTTPRequestHandler):
     """Controls the functionality of any GET, PUT, POST, DELETE requests to the server
@@ -33,11 +35,30 @@ class HandleRequests(BaseHTTPRequestHandler):
         (resource, id) = self.parse_url(self.path)
         
         if resource == "completions":
-            response = ""
+                if id is not None:
+                    self._set_headers(200)
+                    response = get_single_completion(id)
+
+                else:
+                    self._set_headers(200)
+                    response = get_all_completions()
         if resource == "clowns":
-            response = ""
+                if id is not None:
+                    self._set_headers(200)
+                    response = get_single_clown(id)
+
+                else:
+                    self._set_headers(200)
+                    response = get_all_clowns()
         if resource == "requests":
-            response = ""
+                if id is not None:
+                    self._set_headers(200)
+                    response = get_single_request(id)
+
+                else:
+                    self._set_headers(200)
+                    response = get_all_requests()
+
             
         self.wfile.write(json.dumps(response).encode())
         
@@ -57,17 +78,17 @@ class HandleRequests(BaseHTTPRequestHandler):
         new_request = None
         
         if resource == "completions":
-            new_completion = ""
+            new_completion = create_completion()
 
             # Encode the new completion and send in response
             self.wfile.write(json.dumps(new_completion).encode())
         if resource == "clowns":
-            new_clown = ""
+            new_clown = create_clown()
 
             # Encode the new completion and send in response
             self.wfile.write(json.dumps(new_clown).encode())
         if resource == "requests":
-            new_request = ""
+            new_request = create_requests()
 
             # Encode the new request and send in response
             self.wfile.write(json.dumps(new_request).encode())
@@ -81,13 +102,13 @@ class HandleRequests(BaseHTTPRequestHandler):
 
         # Delete a single animal from the list
         if resource == "completions":
-            ""
+            delete_completion()
             
         if resource == "clowns":
-            ""
+            delete_clown()
             
         if resource == "requests":
-            ""
+            delete_request()
             
         # Encode the new animal and send in response
         self.wfile.write("".encode())
@@ -103,11 +124,11 @@ class HandleRequests(BaseHTTPRequestHandler):
 
         # Delete a single animal from the list
         if resource == "completions":
-            ""            
+            update_completion()           
         if resource == "clowns":
-            ""            
+            update_clown()           
         if resource == "requests":
-            ""            
+            update_request()            
 
         # Encode the new animal and send in response
         self.wfile.write("".encode())
